@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 27 27">
+  <g id="Group_20" data-name="Group 20" transform="translate(-1755 -75)">
+    <circle id="Ellipse_1" data-name="Ellipse 1" cx="13.5" cy="13.5" r="13.5" transform="translate(1755 75)" fill="#d8eadb"/>
+    <path id="Icon_ionic-ios-unlock" data-name="Icon ionic-ios-unlock" d="M15.625,7.939H9.666V6.418a2.155,2.155,0,0,1,4.311,0h0a.444.444,0,1,0,.888,0h0a3.043,3.043,0,1,0-6.086.041v1.48H8.018A1.272,1.272,0,0,0,6.75,9.207v6.086a1.272,1.272,0,0,0,1.268,1.268h7.607a1.272,1.272,0,0,0,1.268-1.268V9.207A1.272,1.272,0,0,0,15.625,7.939Zm-3.36,3.956v2.181a.455.455,0,0,1-.422.456.444.444,0,0,1-.466-.444V11.895a1.014,1.014,0,1,1,.888,0Z" transform="translate(1757.153 77.825)" fill="#666"/>
+  </g>
+</svg>
