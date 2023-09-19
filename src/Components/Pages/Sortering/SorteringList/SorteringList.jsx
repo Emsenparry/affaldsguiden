@@ -9,7 +9,6 @@ import Search from "../../../Partials/Search/Search";
 
 const SorteringList = () => {
   const [sortering, setSortering] = useState([]);
-  const [query, setQuery] = useState("");
 
   useEffect(() => {
     const getData = async () => {
@@ -23,17 +22,14 @@ const SorteringList = () => {
     getData();
   }, [setSortering]);
 
-  const filteredSortering = sortering.filter((item) =>
-    item.title.toLowerCase().includes(query.toLowerCase())
-  );
 
   return (
     <Layout title="Sortering">
       <ContainerStyle maxwidth="1100">
-        <Search onChange={(value) => setQuery(value)} />
+        <Search items={sortering} setItems={setSortering} />
         <section className={styles.gallery}>
-          {filteredSortering.length > 0 ? (
-            filteredSortering.map((item) => (
+          {sortering ? (
+            sortering.map((item) => (
               <Link to={`${item.id}`} key={item.id}>
                 <figure key={item.id}>
                   <img
