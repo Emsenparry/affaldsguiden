@@ -1,11 +1,12 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import {Layout} from "../../Layout/Layout";
+import {Layout} from "../../../Layout/Layout";
 import styles from "./Sortering.module.scss";
-import {ContainerStyle} from '../../Styled/Container.style'
+import {ContainerStyle} from '../../../Styled/Container.style'
+import { Link } from "react-router-dom";
 
 
-const Sortering = () => {
+const SorteringList = () => {
   const [sortering, setSortering] = useState([]);
 
   useEffect(() => {
@@ -27,12 +28,14 @@ const Sortering = () => {
         {sortering &&
           sortering.map((item) => {
             return (
+              <Link to={`${item.id}`}>
               <figure key={item.id}>
                 <img className={styles.trashImg} src={`http://localhost:4000/Assets/Images/Guide/Categories/${item.filename}`} alt="sectionimages" />
                 <figcaption style={{ backgroundColor: `#${item.color}` }}>
                   <h3>{item.title}</h3>
                 </figcaption>
               </figure>
+              </Link>
             );
           })}
       </section>
@@ -41,4 +44,4 @@ const Sortering = () => {
   );
 };
 
-export default Sortering;
+export default SorteringList;
