@@ -1,15 +1,17 @@
 @use '../../../Assets/Vars.scss' as c;
 
 .active {
-  color: purple;
+  color: c.$green;
 }
 nav {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 10% auto 10%;
+  justify-items: center;
   align-items: center;
-  margin: 0 5vw;
   position: sticky;
   top: 0;
+  margin-top: 3em;
+  margin-bottom: 1em;
   ul {
     display: flex;
     li {
@@ -21,11 +23,14 @@ nav {
         padding: 0 1em;
         &:not(.active) {
             &:hover {
-                color: red;
+                color: c.$green;
             }
         }
       }
     }
+  }
+  img{
+    margin-left: 4vw;
   }
   .menu {
     display: none;
@@ -43,10 +48,15 @@ nav {
       border-radius: 0.3em;
     }
   }
+  .login-icon{
+    margin-left: auto;
+  }
 }
 
 @media (max-width: 768px) {
   nav {
+    margin-top: 1em;
+    display: flex;
     .menu {
       display: flex;
     }
@@ -66,10 +76,11 @@ nav {
     ul.open {
       display: flex;
     }
-  }
-  .login-icon{
-    margin: 0 auto;
-    padding-top: 1em;
+    .login-icon {
+      margin: 0 auto;
+      padding-top: 1em;
+      display: block;
+    }
   }
 }
 

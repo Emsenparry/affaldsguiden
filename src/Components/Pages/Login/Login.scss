@@ -1,0 +1,50 @@
+@use "../../../Assets/Vars.scss" as c;
+
+.loginForm {
+  input {
+    padding: 1em 0;
+    margin: 1em 0;
+    width: 30%;
+    border-radius: 1em;
+    border: 2px solid c.$grey;
+    padding-left: 1em;
+  }
+
+  button {
+    cursor: pointer;
+    color: white;
+    background-color: c.$blue;
+    padding: 0.5em 1em;
+    border-radius: 0.5em;
+    border: none;
+    font-size: 1.2em;
+    &:hover {
+      background-color: #1b786d;
+    }
+  }
+
+  .error {
+    color: red;
+    font-size: 1em;
+  }
+
+  .passwordToggle {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+}
+
+.logOutBtn {
+  cursor: pointer;
+  color: white;
+  background-color: c.$blue;
+  padding: 0.5em 1em;
+  border-radius: 0.5em;
+  margin: 1em;
+  margin-left: 0;
+  font-size: 1.2em;
+  &:hover {
+    background-color: #1b786d;
+  }
+}

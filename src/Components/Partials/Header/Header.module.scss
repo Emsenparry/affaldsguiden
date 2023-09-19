@@ -1,0 +1,57 @@
+@use "../../../Assets/Vars.scss" as c;
+
+.container {
+  background-color: c.$grey;
+  padding: 2em;
+  margin: 0 auto;
+  text-align: center;
+  border-radius: 8px;
+  width: 35%;
+  z-index: 1;
+  position: relative;
+  bottom: 4em;
+  h2 {
+    font-size: 1.5em;
+    font-weight: 400;
+    padding-bottom: 1.5em;
+  }
+  .buttons {
+    display: flex;
+    justify-content: center;
+    gap: 0 1em;
+    padding-bottom: 1em;
+    button {
+      width: 30%;
+      padding: 10px 15px;
+      background-color: c.$blue;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      a{
+        color: white;
+        text-decoration: none;
+      }
+      &:hover {
+        background-color: #17685f;
+      }
+    }
+  }
+}
+
+// MEDIA QUERIES MOBILE
+@media (max-width: 768px) {
+  .container {
+    width: 70%;
+    h2 {
+      font-size: 1.3em;
+    }
+    .buttons {
+      button {
+        width: 40%;
+        margin-bottom: 1em;
+      }
+    }
+  }
+}

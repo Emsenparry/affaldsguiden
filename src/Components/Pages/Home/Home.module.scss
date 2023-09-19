@@ -1,0 +1,137 @@
+@use "../../../Assets/Vars.scss" as c;
+
+.figureMain {
+  display: grid;
+  grid-template-columns: 40% auto;
+  justify-content: center;
+  align-items: center;
+  gap: 0 1em;
+  margin-top: 7%;
+  figcaption {
+    margin-left: 2em;
+    h1 {
+      font-size: 4em;
+      margin-bottom: 0.6em;
+      max-width: 80%;
+      font-weight: 400;
+      span {
+        background: linear-gradient(c.$lightgreen, c.$lightgreen) 100% 65% / 80%
+          25% no-repeat;
+      }
+    }
+    p {
+      font-size: 1.9ch;
+      max-width: 80%;
+    }
+    .buttons {
+      padding-top: 5em;
+      button {
+        margin-right: 1em;
+        border-radius: 4px;
+        padding: 1em 1.5em;
+        background-color: c.$blue;
+        border: none;
+        cursor: pointer;
+        a {
+          color: white;
+          text-decoration: none;
+        }
+      }
+      :nth-child(2) {
+        background-color: transparent;
+        border: 1px solid c.$green;
+        color: c.$green;
+      }
+    }
+  }
+  img {
+    max-width: 100%;
+    border-radius: 10px;
+  }
+}
+
+.figureMainTwo {
+  display: grid;
+  grid-template-columns: auto 45%;
+  justify-content: center;
+  align-items: center;
+  gap: 0 1em;
+  margin-top: 10%;
+  margin-bottom: 3%;
+  figcaption {
+    margin-left: 5em;
+    h1 {
+      font-size: 4em;
+      margin-bottom: 0.6em;
+      max-width: 80%;
+      font-weight: 400;
+      span {
+        background: linear-gradient(c.$lightgreen, c.$lightgreen) 100% 65% / 80%
+          25% no-repeat;
+      }
+    }
+    p {
+      font-size: 1.9ch;
+      max-width: 80%;
+    }
+    .buttons {
+      padding-top: 5em;
+      button {
+        margin-right: 1em;
+        border-radius: 4px;
+        padding: 1em 2em;
+        background-color: c.$blue;
+        border: none;
+        cursor: pointer;
+        a {
+          color: white;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+  img {
+    max-width: 100%;
+    border-radius: 10px;
+  }
+}
+
+.wave{
+  display: block;
+  max-width: 100%;
+}
+
+// MEDIA QUERIES MOBILE
+@media (max-width: 767px) {
+    .figureMain,
+    .figureMainTwo {
+      grid-template-columns: 1fr 1fr; 
+      margin: 1em;
+      figcaption {
+        margin-left: 0; 
+        text-align: center;
+        h1 {
+          font-size: 2em; 
+          max-width: 100%; 
+        }
+        p {
+          font-size: 1.5ch;
+          max-width: 100%; 
+        }
+        .buttons {
+            padding-top: 1em;
+          button {
+            margin-bottom: 1em;
+            width: 80%;
+          }
+        }
+      }
+    }
+  }
+
+  
+  
+  
+  
+  
+  

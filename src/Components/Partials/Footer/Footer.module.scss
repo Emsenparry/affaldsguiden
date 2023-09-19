@@ -1,0 +1,48 @@
+@use "../../../Assets/Vars.scss" as c;
+
+.footerMain {
+  background-color: c.$blue;
+  color: c.$grey;
+  padding: 2em 0;
+  .infoBoxOne {
+    p {
+      margin: 1.5em 0;
+      max-width: 38ch;
+    }
+  }
+  .backToTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    span {
+      display: flex;
+      align-items: center;
+      gap: 0 1em;
+    }
+  }
+}
+
+
+//MEDIA QUERIES MOBILE
+@media (max-width: 767px) {
+  /* Mobile styles go here */
+  .footerMain{
+    padding: 1em 0; 
+  
+  .infoBoxOne {
+    text-align: center;
+    p {
+      margin: 1em 0;
+      max-width: 100%; 
+    }
+  }
+  .backToTop {
+    flex-direction: column; 
+    text-align: center;
+
+    span {
+      margin-top: 1em;
+    }
+  }
+  }
+}

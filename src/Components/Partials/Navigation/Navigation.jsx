@@ -3,11 +3,13 @@ import { Link, NavLink } from "react-router-dom";
 import logo from '../../../Assets/Images/Layout/Logo.svg'
 import loginUnlocked from '../../../Assets/Images/Layout/login-unlocked.svg'
 import './Navigation.scss'
+import { ContainerStyle } from "../../Styled/Container.style";
 
 const Navigation = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
+    <ContainerStyle maxwidth="1400">
     <nav>
       <Link to="/" className="title">
         <img src={logo} alt="logo"/>
@@ -19,7 +21,7 @@ const Navigation = () => {
       </div>
       <ul className={menuOpen ? "open" : ""}>
       <li>
-          <NavLink to="/forside">Forside</NavLink>
+          <NavLink to="/">Forside</NavLink>
         </li>
         <li>
           <NavLink to="/sortering">Sortering</NavLink>
@@ -31,10 +33,11 @@ const Navigation = () => {
           <NavLink to="/bestil">Bestil beholder</NavLink>
         </li>
       </ul>
-      <Link to="login" className="login-icon">
+      <Link to="/login" className="login-icon">
       <img src={loginUnlocked} alt="login-icon"/>
       </Link>
     </nav>
+    </ContainerStyle>
   );
 };
 
