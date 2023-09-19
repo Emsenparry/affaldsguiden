@@ -1,5 +1,9 @@
 @use '../../../Assets/Vars.scss' as c;
 
+.background{
+  background-color: white;
+  padding: 0.5em;
+}
 .active {
   color: c.$green;
 }
@@ -10,7 +14,7 @@ nav {
   align-items: center;
   position: sticky;
   top: 0;
-  margin-top: 3em;
+  margin-top: 1em;
   margin-bottom: 1em;
   ul {
     display: flex;

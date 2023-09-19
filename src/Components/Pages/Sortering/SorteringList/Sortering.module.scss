@@ -1,7 +1,12 @@
+body{
+  background-image: linear-gradient(rgb(98, 188, 101, 20%), white);
+}
+
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 4fr));
-  gap: 2em;
+  gap: 5em 2em;
+  margin-bottom: 5em;
   figure {
     transition: transform 0.5s ease-in-out;
     .trashImg {
@@ -22,5 +27,20 @@
     &:hover {
         transform: scale(1.03);
       }
+  }
+}
+a{
+  text-decoration: none;
+}
+.wave{
+  display: block;
+  max-width: 100%;
+}
+
+
+//MEDIA QUERIES MOBILE
+@media (max-width: 768px) {
+  .gallery { 
+    gap: 3em 0; 
   }
 }

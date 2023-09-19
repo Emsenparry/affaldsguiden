@@ -9,6 +9,7 @@ const Navigation = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
+    <div className="background">
     <ContainerStyle maxwidth="1400">
     <nav>
       <Link to="/" className="title">
@@ -38,6 +39,7 @@ const Navigation = () => {
       </Link>
     </nav>
     </ContainerStyle>
+    </div>
   );
 };
 
