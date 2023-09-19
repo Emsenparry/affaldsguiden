@@ -7,6 +7,7 @@ import Genbrugsstationer from '../Pages/Genbrugsstationer/Genbrugsstationer'
 import Bestilling from '../Pages/Bestilling/Bestilling'
 import SorteringList from '../Pages/Sortering/SorteringList/SorteringList'
 import SorteringDetails from '../Pages/Sortering/SorteringDetails/SorteringDetails'
+// import Search from '../Partials/Search/Search'
 
 const AppRouter = () => {
   return (
@@ -22,6 +23,8 @@ const AppRouter = () => {
         <Route path="/genbrugsstationer" element={<Genbrugsstationer />}/>
         <Route path="/bestil" element={<Bestilling />}/>
         <Route path="/login" element={<Login />} />
+
+        {/* <Route path='/search' element={<Search />} /> */}
       <Route path="*" element={<NotFound />} />
     </Routes>
   )
