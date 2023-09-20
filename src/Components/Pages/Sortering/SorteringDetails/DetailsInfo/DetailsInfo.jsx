@@ -51,13 +51,16 @@ const DetailsInfo = () => {
     <ul>
       {rules.map((item) => (
         <li key={item.id}>
+          {item.title && <p>{item.title}</p>}
           {item.categories && (
             <ul>
               {item.categories.map((category) => (
                 <li key={category.id}>
                   {category.rules && (
                     <p>
-                      {category.rules.is_allowed.toString()}
+                      {category.rules.is_allowed ? "Ja tak" : "Nej tak"}
+                      {category.rules.is_station ? "Ja tak" : "Nej tak"}
+                      {category.rules.is_home ? "Ja tak" : "Nej tak"}
                     </p>
                   )}
                 </li>
