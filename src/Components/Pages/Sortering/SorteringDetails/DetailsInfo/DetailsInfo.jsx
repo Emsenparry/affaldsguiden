@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 const DetailsInfo = () => {
-  const [category, setcategory] = useState({});
+  const [section, setsection] = useState({});
   const { section_id } = useParams();
 
   useEffect(() => {
@@ -12,7 +12,7 @@ const DetailsInfo = () => {
         const result = await axios.get(
           `http://localhost:4000/section/${section_id}`
         );
-        setcategory(result.data); 
+        setsection(result.data);
       } catch (err) {
         console.error(err);
       }
@@ -22,8 +22,20 @@ const DetailsInfo = () => {
 
   return (
     <div>
-      {category ? (
-        <p>{category.title}</p>
+      {section ? (
+        <>
+          <p>{section.title}</p>
+          {section.categories &&
+            section.categories.map((item) => (
+              <div key={item.id}>
+                <img
+                  src={`http://localhost:4000/Assets/Images/Guide/Icons/${item.icon_filename}`}
+                  alt=""
+                />
+                <p key={item.id}>{item.title}</p>
+              </div>
+            ))}
+        </>
       ) : null}
     </div>
   );
