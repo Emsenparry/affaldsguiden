@@ -34,7 +34,8 @@ const SorteringList = () => {
     <>
       <Layout title="Sortering">
         <ContainerStyle maxwidth="1100">
-          {keyword && <Search keyword={keyword} />}
+          
+          {/* SEARCH BAR */}
           <h1>Din guide</h1>
           <p>til en sund affaldssortering</p>
           <div className={styles.searchBar}>
@@ -47,8 +48,11 @@ const SorteringList = () => {
               <button className={styles.icon}>
                 <AiOutlineSearch size={30} />
               </button>
+              {keyword && <Search keyword={keyword} />}
             </div>
           </div>
+
+          {/* GALLERY */}
         <section className={styles.gallery}>
           {sortering ? (
             sortering.map((item) => (

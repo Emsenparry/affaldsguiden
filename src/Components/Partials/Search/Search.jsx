@@ -2,13 +2,13 @@ import axios from "axios";
 import { useEffect, useState, useMemo } from "react";
 
 const Search = ({ keyword }) => {
-  const [apiData, setApiData] = useState([]);
+  const [apiData, setApiData] = useState();
 
   useEffect(() => {
     // Fetch function
     const getData = async () => {
       const result = await axios.get(`http://localhost:4000/search/${keyword}`);
-      setApiData(result.data.items);
+      setApiData(result.data.data);
     };
     getData();
   }, [keyword]);
@@ -16,14 +16,13 @@ const Search = ({ keyword }) => {
   // Data filter function
   const data = useMemo(() => {
     if (!apiData) {
-      return [];
+      return;
     }
     if (keyword) {
       // Filtrering ud fra søgeresultat
       return apiData.filter(
         (elm) =>
-          elm.title.toLowerCase().includes(keyword.toLowerCase()) ||
-          elm.name.toLowerCase().includes(keyword.toLowerCase())
+          elm.title.toLowerCase().includes(keyword.toLowerCase()) 
       );
     } else {
       // Random sortering og slice
@@ -37,10 +36,10 @@ const Search = ({ keyword }) => {
 
   return (
     <div>
-      {data && data.map((item) => {
+      {data && data.map((item, index) => {
         return (
-          <div key={item.id} href={`/${item.id}`}>
-            {item.title} - {item.name}
+          <div key={index} href={`/${item.id}`}>
+            {item.title}
           </div>
         );
       })}
