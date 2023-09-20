@@ -3,22 +3,29 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 const DetailsInfo = () => {
-  const [section, setsection] = useState({});
-  const { section_id } = useParams();
+  const [section, setSection] = useState({});
+  const [rules, setRules] = useState([]); 
+  const { section_id, category_id } = useParams(); 
 
   useEffect(() => {
     const getData = async () => {
       try {
+        
         const result = await axios.get(
           `http://localhost:4000/section/${section_id}`
         );
-        setsection(result.data);
+        setSection(result.data);
+
+        const rulesResult = await axios.get(
+          `http://localhost:4000/types/${section_id}/${category_id}?limit=1`
+        );
+        setRules(rulesResult.data);
       } catch (err) {
         console.error(err);
       }
     };
     getData();
-  }, [section_id]);
+  }, [section_id, category_id]);
 
   return (
     <div>
@@ -26,17 +33,43 @@ const DetailsInfo = () => {
         <>
           <p>{section.title}</p>
           {section.categories &&
-            section.categories.map((item) => (
-              <div key={item.id}>
+            section.categories.map((category) => (
+              <div key={category.id}>
                 <img
-                  src={`http://localhost:4000/Assets/Images/Guide/Icons/${item.icon_filename}`}
+                  src={`http://localhost:4000/Assets/Images/Guide/Icons/${category.icon_filename}`}
                   alt=""
                 />
-                <p key={item.id}>{item.title}</p>
+                <p>{category.title}</p>
               </div>
             ))}
         </>
       ) : null}
+
+      
+{rules && (
+  <div>
+    <ul>
+      {rules.map((item) => (
+        <li key={item.id}>
+          {item.categories && (
+            <ul>
+              {item.categories.map((category) => (
+                <li key={category.id}>
+                  {category.rules && (
+                    <p>
+                      {category.rules.is_allowed.toString()}
+                    </p>
+                  )}
+                </li>
+              ))}
+            </ul>
+          )}
+        </li>
+      ))}
+    </ul>
+  </div>
+)}
+
     </div>
   );
 };

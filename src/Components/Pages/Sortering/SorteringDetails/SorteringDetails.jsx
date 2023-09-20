@@ -31,7 +31,7 @@ const SorteringDetails = () => {
                 <figcaption>
                   <h3>{data.title}</h3>
                 </figcaption>
-                <img src={`http://localhost:4000/Assets/Images/Guide/Categories/${data.filename}`} alt="" />
+                <img src={data && data.filename ? `http://localhost:4000/Assets/Images/Guide/Categories/${data.filename}` : ''} alt="logoimages" />
               </figure>
 
 
