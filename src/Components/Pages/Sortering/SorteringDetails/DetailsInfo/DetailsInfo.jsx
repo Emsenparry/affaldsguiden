@@ -35,10 +35,12 @@ const DetailsInfo = () => {
           {section.categories &&
             section.categories.map((category) => (
               <div key={category.id}>
-                <img
-                  src={`http://localhost:4000/Assets/Images/Guide/Icons/${category.icon_filename}`}
+                {section && (
+                  <img
+                  src={require(`../../../../../Assets/Images/Guide/Icons/${category.icon_filename}`)}
                   alt=""
                 />
+                )}
                 <p>{category.title}</p>
               </div>
             ))}
