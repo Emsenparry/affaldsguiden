@@ -7,7 +7,7 @@ import Genbrugsstationer from '../Pages/Genbrugsstationer/Genbrugsstationer'
 import Bestilling from '../Pages/Bestilling/Bestilling'
 import SorteringList from '../Pages/Sortering/SorteringList/SorteringList'
 import SorteringDetails from '../Pages/Sortering/SorteringDetails/SorteringDetails'
-import PageTwo from '../Pages/Bestilling/PageTwo/PageTwo'
+import BestilType from '../Pages/Bestilling/BestilType/BestilType'
 
 const AppRouter = () => {
   return (
@@ -20,9 +20,11 @@ const AppRouter = () => {
         </Route>
 
         <Route path="/genbrugsstationer" element={<Genbrugsstationer />}/>
+
+        
        <Route path='/bestil'>
-          <Route index element={<Bestilling />} />
-          <Route path='vælgtype' element={<PageTwo />}/>
+          <Route index element={<BestilType />} />
+          <Route path=':container_id' element={<Bestilling/>}/>
         </Route>
 
         <Route path="/login" element={<Login />} />
