@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-
+import styles from "./Search.module.scss";
+import {AiOutlineSearch} from 'react-icons/ai'
 
 const Search = ({ items, setItems }) => {
   const [query, setQuery] = useState();
@@ -8,7 +9,9 @@ const Search = ({ items, setItems }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/search/${query}`);
+        const response = await axios.get(
+          `http://localhost:4000/search/${query}`
+        );
         setItems(response.data.data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -20,22 +23,26 @@ const Search = ({ items, setItems }) => {
     } else {
       setItems([]);
     }
-  }, [query]);
-
+  }, [query, setItems]);
 
   return (
-    <div>
-      <label>Search</label>
-      <input type="text" onChange={(e) => setQuery(e.target.value)} />
-      <ul>
-        {items.map((value) => (
-          <React.Fragment key={items.id}>
-          <p>{value.title}</p>
-          </React.Fragment>
-        ))}
-      </ul>
+    <div className={styles.container}>
+      <h1>Din guide</h1>
+      <p>til en sund affaldssortering</p>
+      <div className={styles.searchBar}>
+        <div className={styles.searchBarIcon}>
+          <input
+            type="text"
+            placeholder="Søg på affald"
+            onChange={(e) => setQuery(e.target.value)}
+          />
+          <button className={styles.icon}>
+            <AiOutlineSearch size={30} />
+          </button>
+        </div>
+      </div>
     </div>
   );
-}
+};
 
 export default Search;

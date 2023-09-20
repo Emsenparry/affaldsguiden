@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Layout } from "../../../Layout/Layout";
-import styles from "./Sortering.module.scss";
+import styles from "./SorteringList.module.scss";
 import { ContainerStyle } from "../../../Styled/Container.style";
 import { Link } from "react-router-dom";
 import wave from "../../../../Assets/Images/Layout/bg-waves-1.svg";
