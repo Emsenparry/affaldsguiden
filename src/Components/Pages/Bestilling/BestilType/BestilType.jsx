@@ -2,14 +2,17 @@ import React, { useState, useEffect } from "react";
 import { Layout } from "../../../Layout/Layout";
 import axios from "axios";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom";
 
 const BestilType = () => {
   const {
     register,
+    handleSubmit,
     formState: { errors },
   } = useForm();
   const [data, setData] = useState([]);
+  const navigate = useNavigate();
+  
 
   useEffect(() => {
     const url = `http://localhost:4000/containers`;
@@ -18,7 +21,7 @@ const BestilType = () => {
       try {
         const result = await axios.get(url);
         console.log(result);
-
+        
         setData(result.data);
       } catch (err) {
         console.error(err);
@@ -27,8 +30,14 @@ const BestilType = () => {
     getData();
   }, [setData]);
 
+  const onSubmit = (data) => {
+    console.log(data);
+    navigate(data.radio)
+  }
+
   return (
     <Layout title="Vælg type">
+    <form onSubmit={handleSubmit(onSubmit)}>
       {data &&
         data.map((item) => {
           return (
@@ -48,12 +57,9 @@ const BestilType = () => {
             </div>
           );
         })}
-        {data ? (
-          <Link to={`/bestil/${data.container_id}`}>
-          <button type="submit">Videre</button>
-        </Link>
-        ) : null}
-    </Layout>
+        <button type="submit">Videre</button>
+    </form>
+  </Layout>
   );
 };
 

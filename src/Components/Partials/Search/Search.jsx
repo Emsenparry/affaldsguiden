@@ -1,48 +1,51 @@
-import React, { useState, useEffect } from "react";
 import axios from "axios";
-import styles from "./Search.module.scss";
-import {AiOutlineSearch} from 'react-icons/ai'
+import { useEffect, useState, useMemo } from "react";
 
-const Search = ({ items, setItems }) => {
-  const [query, setQuery] = useState();
+const Search = ({ keyword }) => {
+  const [apiData, setApiData] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          `http://localhost:4000/search/${query}`
-        );
-        setItems(response.data.data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
+    // Fetch function
+    const getData = async () => {
+      const result = await axios.get(`http://localhost:4000/search/${keyword}`);
+      setApiData(result.data.items);
     };
+    getData();
+  }, [keyword]);
 
-    if (query) {
-      fetchData();
-    } else {
-      setItems([]);
+  // Data filter function
+  const data = useMemo(() => {
+    if (!apiData) {
+      return [];
     }
-  }, [query, setItems]);
+    if (keyword) {
+      // Filtrering ud fra søgeresultat
+      return apiData.filter(
+        (elm) =>
+          elm.title.toLowerCase().includes(keyword.toLowerCase()) ||
+          elm.name.toLowerCase().includes(keyword.toLowerCase())
+      );
+    } else {
+      // Random sortering og slice
+      return apiData
+        .sort(function (a, b) {
+          return 0.5 - Math.random();
+        })
+        .slice(0, 10);
+    }
+  }, [apiData, keyword]);
 
   return (
-    <div className={styles.container}>
-      <h1>Din guide</h1>
-      <p>til en sund affaldssortering</p>
-      <div className={styles.searchBar}>
-        <div className={styles.searchBarIcon}>
-          <input
-            type="text"
-            placeholder="Søg på affald"
-            onChange={(e) => setQuery(e.target.value)}
-          />
-          <button className={styles.icon}>
-            <AiOutlineSearch size={30} />
-          </button>
-        </div>
-      </div>
-    </div>
+    <div>
+      {data && data.map((item) => {
+        return (
+          <div key={item.id} href={`/${item.id}`}>
+            {item.title} - {item.name}
+          </div>
+        );
+      })}
+    </div>	
   );
 };
 
-export default Search;
+export { Search };

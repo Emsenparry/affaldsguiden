@@ -27,7 +27,6 @@ const Bestilling = () => {
     try {
       const result = await axios.post(endpoint, formData);
       if (result.data) {
-        console.log(result.data);
       }
     } catch (error) {
       console.error(error);
