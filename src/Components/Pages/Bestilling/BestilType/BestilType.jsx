@@ -12,12 +12,16 @@ const BestilType = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
+    const url = `http://localhost:4000/containers`;
+
     const getData = async () => {
       try {
-        const result = await axios.get(`http://localhost:4000/containers`);
+        const result = await axios.get(url);
         console.log(result);
-      } catch (error) {
-        console.error(error);
+
+        setData(result.data);
+      } catch (err) {
+        console.error(err);
       }
     };
     getData();
@@ -28,7 +32,7 @@ const BestilType = () => {
       {data &&
         data.map((item) => {
           return (
-            <div>
+            <div key={item.id}>
               <input
                 type="radio"
                 {...register("radio", { required: true })}
@@ -41,12 +45,14 @@ const BestilType = () => {
               />
               {errors.radio && <span>Du skal vælge en type!</span>}
 
-              <Link to={`/bestil/${item.id}`}>
-                <button type="submit">Videre</button>
-              </Link>
             </div>
           );
         })}
+        {data ? (
+          <Link to={`/bestil/${data.container_id}`}>
+          <button type="submit">Videre</button>
+        </Link>
+        ) : null}
     </Layout>
   );
 };

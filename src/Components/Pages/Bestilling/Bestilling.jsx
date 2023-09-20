@@ -2,7 +2,6 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 
-
 const Bestilling = () => {
   const { container_id } = useParams();
 
@@ -18,13 +17,12 @@ const Bestilling = () => {
     const formData = new URLSearchParams();
     formData.append("container_id", container_id);
     formData.append("fullname", formObject.fullname);
-    formData.append("address", formObject.address);
-    formData.append("zipcode", formObject.zipcode);
-    formData.append("city", formObject.city);
-    formData.append("email", formObject.email);
     formData.append("phone", formObject.phone);
+    formData.append("email", formObject.email);
+    formData.append("address", formObject.address);
+    formData.append("city", formObject.city);
+    formData.append("zipcode", formObject.zipcode);
     console.log(...formData);
-
 
     try {
       const result = await axios.post(endpoint, formData);
@@ -39,10 +37,14 @@ const Bestilling = () => {
   return (
     <div>
       <form onSubmit={handleSubmit(formSubmit)}>
-        <input type="hidden" value={container_id} {...register("container_id")} />
+        <input
+          type="hidden"
+          value={container_id}
+          {...register("container_id")}
+        />
         <div>
-          <label htmlFor="fullname">Fornavn:</label>
           <input
+            placeholder="Navn"
             {...register("fullname", {
               required: "Du skal indtaste dit fuldenavn",
               pattern: {
@@ -55,8 +57,36 @@ const Bestilling = () => {
         </div>
 
         <div>
-          <label htmlFor="address">Adresse:</label>
           <input
+          placeholder="Email"
+            {...register("email", {
+              required: "Du skal indtaste din email",
+              pattern: {
+                value: /^\S+@\S+$/,
+                message: "Du skal indtaste en gyldig mailadresse",
+              },
+            })}
+          />
+          {errors.email && <span>{errors.email.message}</span>}
+        </div>
+
+        <div>
+          <input
+            placeholder="Telefon"
+            {...register("phone", {
+              required: "Du skal indtaste dit telefon nummer",
+              pattern: {
+                value: /^[0-9]{8}$/,
+                message: "Du skal indtaste et gyldig telefonnummer",
+              },
+            })}
+          />
+          {errors.phone && <span>{errors.phone.message}</span>}
+        </div>
+
+        <div>
+          <input
+            placeholder="Addresse"
             {...register("address", {
               required: "Du skal indtaste din adresse",
             })}
@@ -65,8 +95,18 @@ const Bestilling = () => {
         </div>
 
         <div>
-          <label htmlFor="zipcode">Postnummer:</label>
           <input
+            placeholder="By"
+            {...register("city", {
+              required: "Du skal indtaste et bynavn",
+            })}
+          />
+          {errors.city && <span>{errors.city.message}</span>}
+        </div>
+
+        <div>
+          <input
+            placeholder="Postnummer"
             {...register("zipcode", {
               required: "Du skal indtaste dit postnummer",
               pattern: {
@@ -87,48 +127,11 @@ const Bestilling = () => {
         </div>
 
         <div>
-          <label htmlFor="city">By:</label>
-          <input
-            {...register("city", {
-              required: "Du skal indtaste et bynavn",
-            })}
-          />
-          {errors.city && <span>{errors.city.message}</span>}
-        </div>
-
-        <div>
-          <label htmlFor="email">Email:</label>
-          <input
-            {...register("email", {
-              required: "Du skal indtaste din email",
-              pattern: {
-                value: /^\S+@\S+$/,
-                message: "Du skal indtaste en gyldig mailadresse",
-              },
-            })}
-          />
-          {errors.email && <span>{errors.email.message}</span>}
-        </div>
-        <div>
-          <label htmlFor="phone">Phone:</label>
-          <input
-            {...register("phone", {
-              required: "Du skal indtaste dit telefon nummer",
-              pattern: {
-                value: /^[0-9]{8}$/,
-                message: "Du skal indtaste et gyldig telefonnummer",
-              },
-            })}
-          />
-          {errors.phone && <span>{errors.phone.message}</span>}
-        </div>
-
-        <div>
           <button>Send</button>
         </div>
       </form>
     </div>
   );
-}
+};
 
 export default Bestilling;
