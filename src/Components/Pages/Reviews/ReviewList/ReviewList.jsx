@@ -23,7 +23,7 @@ const ReviewList = (props) => {
   return (
     <>
       {reviewList &&
-        reviewList.map((data) => {
+        reviewList.slice(0,1).map((data) => {
           return (
             <article key={data.id}>
               <NumStars num_stars={data.num_stars} />

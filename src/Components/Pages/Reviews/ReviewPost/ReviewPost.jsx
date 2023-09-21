@@ -4,9 +4,10 @@ import { useForm } from "react-hook-form";
 import { Stars } from "../../../Helpers/Helpers";
 import { useState } from "react";
 
-const ReviewPost = (org_id) => {
+const ReviewPost = (props) => {
   const { loginData } = useAuth();
   const [rating, setRating] = useState(null);
+  
 
   const {
     register,
@@ -18,7 +19,7 @@ const ReviewPost = (org_id) => {
 
   const formSubmit = async (data) => {
     const formData = new URLSearchParams();
-    formData.append("org_id", data.org_id);
+    formData.append("org_id", props.org_id);
     formData.append("subject", data.subject);
     formData.append("comment", data.comment);
     formData.append("num_stars", rating);
@@ -48,7 +49,6 @@ const ReviewPost = (org_id) => {
   return (
     <>
       <form onSubmit={handleSubmit(formSubmit)}>
-        <input type="hidden" value="1" {...register("org_id")} />
         <h2>Skriv en anmeldelse</h2>
         <div>
           <Stars rating={rating} setRating={setRating} />

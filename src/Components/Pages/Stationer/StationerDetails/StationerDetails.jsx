@@ -40,7 +40,7 @@ const StationerDetails = () => {
               </p>
               <p>{data.country}</p>
             </div>
-            <ReviewPost />
+            <ReviewPost org_id={data.id} />
             <ReviewDetails />
           </div>
         )}

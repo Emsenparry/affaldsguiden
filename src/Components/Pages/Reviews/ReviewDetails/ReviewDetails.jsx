@@ -6,14 +6,15 @@ import pfp from '../../../../Assets/Images/Layout/profilePicture.svg';
 
 
 const ReviewDetails = () => {
-  const [reviewDetails, setReviewDetails] = useState({});
+  const [reviewDetails, setReviewDetails] = useState();
   const { station_id } = useParams();
+  
 
   useEffect(() => {
     const getData = async () => {
       try {
         const result = await axios.get(
-          `http://localhost:4000/reviews/details/${station_id}`
+          `http://localhost:4000/reviews/${station_id}`
         );
         setReviewDetails(result.data);
       } catch (err) {
@@ -25,21 +26,23 @@ const ReviewDetails = () => {
 
   return (
     <>
-      {reviewDetails && reviewDetails.user && (
-      <section className="wrapper">
+      {reviewDetails && reviewDetails.map((item) => {
+      return(
+        <section className="wrapper" key={item.id}>
         <div>
-          <h3>{reviewDetails.subject}</h3>
-        <p>{reviewDetails.user.firstname}</p>
-        <p>{formatDate(reviewDetails.created_at, true)}</p>
+          <h3>{item.subject}</h3>
+        <p>{item.user.firstname}</p>
+        <p>{formatDate(item.created_at, true)}</p>
         <div>
-          <p>{reviewDetails.comment}</p>
+          <p>{item.comment}</p>
         </div>
       </div>
       <div>
         <img src={pfp} alt="profilepicture" />
       </div>
       </section>
-    )}
+      )
+    })}
     </>
   );
 };
