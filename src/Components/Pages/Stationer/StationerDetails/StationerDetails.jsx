@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import ReviewDetails from "../../../Reviews/ReviewDetails/ReviewDetails";
+import ReviewDetails from "../../Reviews/ReviewDetails/ReviewDetails";
 
 const StationerDetails = () => {
   const [data, setdata] = useState({});
