@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import ReviewList from "../../../Reviews/ReviewList/ReviewList";
+import ReviewList from "../../Reviews/ReviewList/ReviewList";
 
 const StationerListe = () => {
   const [data, setData] = useState([]);

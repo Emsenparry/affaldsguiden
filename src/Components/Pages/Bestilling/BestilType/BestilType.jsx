@@ -18,11 +18,10 @@ const BestilType = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const url = `http://localhost:4000/containers`;
 
     const getData = async () => {
       try {
-        const result = await axios.get(url);
+        const result = await axios.get(`http://localhost:4000/containers`);
 
         setData(result.data);
       } catch (err) {
