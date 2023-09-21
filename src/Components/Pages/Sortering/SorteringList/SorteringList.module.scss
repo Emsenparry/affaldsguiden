@@ -1,3 +1,5 @@
+@use "../../../../Assets/Vars.scss" as c;
+
 body{
   background-image: linear-gradient(rgb(98, 188, 101, 20%), white);
 }
@@ -7,6 +9,7 @@ body{
   grid-template-columns: repeat(auto-fit, minmax(250px, 4fr));
   gap: 5em 2em;
   margin-bottom: 5em;
+  margin-top: 4em;
   figure {
     transition: transform 0.5s ease-in-out;
     .trashImg {
@@ -36,6 +39,57 @@ a{
   display: block;
   max-width: 100%;
 }
+
+
+// SEARCH BAR STYLING
+.container {
+  margin-top: 4em;
+  text-align: center;
+  h1 {
+    font-size: 2em;
+    color: c.$green;
+    font-weight: 400;
+  }
+  p {
+    font-weight: 600;
+    font-size: 1.3em;
+    color: c.$blue;
+    padding-top: 0.1em;
+  }
+  .searchBar{
+    display: flex;
+    justify-content: center;
+    margin-top: 2em;
+    .searchBarIcon{
+      position: relative;
+      width: 40%;
+      input{
+        width: 100%;
+        background: white;
+        border: none;
+        border-radius: 50px;
+        height: 3.5em;
+        padding: 1em 1.4em;
+        &:focus {
+          outline: none;
+          border-color: c.$buttonbg;
+        }
+      }
+      .icon{
+        position: absolute;
+        top: 50%;
+        right: 5%;
+        cursor: pointer;
+        background: none;
+        transform: translateY(-50%);
+        border: none;
+      }
+    }
+  }
+ 
+}
+
+
 
 
 //MEDIA QUERIES MOBILE

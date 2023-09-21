@@ -1,0 +1,114 @@
+@use "../../../../Assets/Vars.scss" as c;
+
+.wrapper {
+  margin: 4em 0;
+  display: grid;
+  grid-template-columns: 30% auto;
+  .info {
+    margin: 4em 1.5em 0 1.5em;
+    h5 {
+      font-weight: 500;
+      font-size: 1.1em;
+    }
+    h2 {
+      font-weight: 600;
+      padding: 1em 0 0.2em 0;
+    }
+  }
+  .divider {
+    background-color: c.$blue;
+    border-radius: 8px 0 0 8px;
+    .stepOneBox {
+      display: flex;
+      justify-content: flex-end;
+      margin: 4em 1.5em 0 0;
+    }
+  }
+  .dividerTwo {
+    background-color: c.$bgTwo;
+    border-radius: 0 8px 8px 0;
+    .next {
+      text-align: right;
+      padding-bottom: 3em;
+      padding-right: 3em;
+      button {
+        padding: 0.5em 2em;
+        background-color: c.$buttonbg;
+        border: none;
+        color: c.$buttontext;
+        font-size: 1.3em;
+        border-radius: 5px;
+        box-shadow: 0 2px 10px 0px rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+  .chooseType {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1em;
+    margin: 4em;
+    padding: 0 3em;
+    .typeIcons {
+      background-color: white;
+      border-radius: 8px;
+      padding: 1.5em 0;
+      position: relative;
+      article {
+        position: relative;
+        input {
+          position: absolute;
+          top: -10px;
+          right: 10px;
+        }
+        .imageFlex {
+          display: flex;
+          justify-content: center;
+          padding-bottom: 1em;
+          img {
+            max-width: 30%;
+          }
+        }
+        figcaption {
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
+.error {
+  color: red;
+  font-weight: 600;
+}
+
+.wave {
+  display: block;
+  max-width: 100%;
+}
+
+//MEDIA QUERIES
+
+@media (max-width: 768px) {
+  .wrapper {
+    grid-template-columns: 100%;
+    margin: 0;
+    .divider {
+      display: none;
+    }
+    .dividerTwo {
+      border-radius: 0;
+      .chooseType {
+        padding: 0;
+      }
+      button {
+        margin-right: 0.5em;
+      }
+    }
+  }
+  .error {
+    font-size: 0.9em;
+  }
+  .wave {
+    display: none;
+  }
+}

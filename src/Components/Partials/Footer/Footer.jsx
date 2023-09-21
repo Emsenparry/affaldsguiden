@@ -3,6 +3,7 @@ import logoWhite from '../../../Assets/Images/Layout/Logo-white.svg'
 import arrowUp from '../../../Assets/Images/Layout/icon-arrow-up.svg'
 import styles from './Footer.module.scss'
 import { ContainerStyle } from '../../Styled/Container.style'
+import { Link } from 'react-router-dom'
 
 const Footer = () => {
   return (
@@ -14,10 +15,16 @@ const Footer = () => {
     </div>
     <div className={styles.backToTop}>
         <p>©2023 Affaldsguiden. </p>
+        <Link
+          onClick={() => {
+            window.scroll(0, 0);
+          }}
+        >
         <span>
             <p>Back to top</p>
-            <img id='top' src={arrowUp} alt="arrow-up" />
+            <img src={arrowUp} alt="arrow-up" />
         </span>
+        </Link>
     </div>
     </ContainerStyle>
     </footer>

@@ -13,7 +13,7 @@ const Header = () => {
         <div className={styles.container}>
           <h2>Find og anmeld genbrugsstationer</h2>
           <div className={styles.buttons}>
-           <button><NavLink to="genbrugsstationer">Find station</NavLink></button>
+           <button><NavLink to="stationer">Find station</NavLink></button>
            <button><NavLink to="login">Login</NavLink></button>
           </div>
         </div>

@@ -20,6 +20,10 @@
     border-radius: 1em;
     border: 2px solid c.$grey;
     padding-left: 1em;
+    &:focus {
+      outline: none;
+      border-color: c.$buttonbg;
+    }
   }
 
  .buttonLogin{

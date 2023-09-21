@@ -1,5 +1,9 @@
 @use "../../../Assets/Vars.scss" as c;
 
+html{
+  scroll-behavior: smooth;
+}
+
 .footerMain {
   background-color: c.$blue;
   color: c.$grey;
@@ -14,10 +18,15 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    a{
+      text-decoration: none;
+      color: white;
+    }
     span {
       display: flex;
       align-items: center;
       gap: 0 1em;
+
     }
   }
 }

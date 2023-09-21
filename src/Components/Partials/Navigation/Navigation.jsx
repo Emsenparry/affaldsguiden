@@ -28,7 +28,7 @@ const Navigation = () => {
           <NavLink to="/sortering">Sortering</NavLink>
         </li>
         <li>
-          <NavLink to="/genbrugsstationer">Genbrugsstationer</NavLink>
+          <NavLink to="/stationer">Genbrugsstationer</NavLink>
         </li>
         <li>
           <NavLink to="/bestil">Bestil beholder</NavLink>

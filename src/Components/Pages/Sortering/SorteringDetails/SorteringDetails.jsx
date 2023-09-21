@@ -33,8 +33,6 @@ const SorteringDetails = () => {
                 </figcaption>
                 <img src={data && data.filename ? `http://localhost:4000/Assets/Images/Guide/Categories/${data.filename}` : ''} alt="logoimages" />
               </figure>
-
-
               <div>
               <DetailsInfo />
               </div>
