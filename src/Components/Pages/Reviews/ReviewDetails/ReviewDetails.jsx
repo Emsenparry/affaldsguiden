@@ -28,6 +28,7 @@ const ReviewDetails = () => {
       {reviewDetails && reviewDetails.user && (
       <section className="wrapper">
         <div>
+          <h3>{reviewDetails.subject}</h3>
         <p>{reviewDetails.user.firstname}</p>
         <p>{formatDate(reviewDetails.created_at, true)}</p>
         <div>
