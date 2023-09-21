@@ -2,6 +2,7 @@ import { React, useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import ReviewDetails from "../../Reviews/ReviewDetails/ReviewDetails";
+import ReviewPost from "../../Reviews/ReviewPost/ReviewPost";
 
 const StationerDetails = () => {
   const [data, setdata] = useState({});
@@ -39,6 +40,7 @@ const StationerDetails = () => {
               </p>
               <p>{data.country}</p>
             </div>
+            <ReviewPost />
             <ReviewDetails />
           </div>
         )}
