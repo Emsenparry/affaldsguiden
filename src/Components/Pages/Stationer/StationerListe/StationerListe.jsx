@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import ReviewList from "../../Reviews/ReviewList/ReviewList";
+import { Layout } from "../../../Layout/Layout";
+import {ContainerStyle} from '../../../Styled/Container.style';
 
 const StationerListe = () => {
   const [data, setData] = useState([]);
@@ -21,7 +23,8 @@ const StationerListe = () => {
 
   return (
     <>
-      <section>
+    <Layout title="Genbrugsstationer">
+      <ContainerStyle maxwidth="1000">
         {data &&
           data.map((station) => {
             return (
@@ -47,7 +50,9 @@ const StationerListe = () => {
             );
           })}
           
-      </section>
+      </ContainerStyle>
+      {/* WAVE */}
+      </Layout>
     </>
   );
 };

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
 const ReviewList = (props) => {
-  const [reviewList, setReviewList] = useState([]);
+  const [avg, setAvg] = useState([]);
   const { org_id } = props;
 
   useEffect(() => {
@@ -12,7 +12,14 @@ const ReviewList = (props) => {
         const result = await axios.get(
           `http://localhost:4000/reviews/${org_id}`
         );
-        setReviewList(result.data);
+       
+        const combined = result.data.reduce((result, data) => {
+          result += data.num_stars;
+          return result;
+        }, 0);
+        
+        const avg = combined / result.data.length;
+        setAvg(avg);
       } catch (err) {
         console.error(err);
       }
@@ -21,17 +28,8 @@ const ReviewList = (props) => {
   }, [org_id]);
 
   return (
-    <>
-      {reviewList &&
-        reviewList.slice(0,1).map((data) => {
-          return (
-            <article key={data.id}>
-              <NumStars num_stars={data.num_stars} />
-            </article>
-          );
-        })}
-    </>
-  );
+    <NumStars num_stars={avg} />
+  )
 };
 
 const NumStars = (props) => {
