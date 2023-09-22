@@ -42,7 +42,7 @@ const BestilType = () => {
   // Funktion, der udføres ved indsendelse af formular
   const onSubmit = (data) => {
     console.log(data);
-    // Naviger til den valgte rute baseret på brugerens valg i formenx½
+    // Naviger til den valgte rute baseret på brugerens valg i formen
     navigate(data.radio);
   };
 
@@ -78,7 +78,7 @@ const BestilType = () => {
                               type="radio"
                               {...register("radio", { required: true })}
                               /*
-                              identificerer unikke typer, og når valgt, inkluderer det den valgte type som
+                              Value identificerer unikke typer, og når valgt, inkluderer det den valgte type som
                               en del af formulardataene for behandling og validering.
                              */
                               value={item.id}

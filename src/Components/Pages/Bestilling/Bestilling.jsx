@@ -30,6 +30,7 @@ const Bestilling = () => {
     // Opretter formdata-objekt til at sende data til serveren
     const formData = new URLSearchParams();
     formData.append("container_id", container_id);
+    // Denne linje tilføjer værdien af formObject.fullname til FormData med nøglen "fullname". 
     formData.append("fullname", formObject.fullname);
     formData.append("phone", formObject.phone);
     formData.append("email", formObject.email);
