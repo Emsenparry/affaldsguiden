@@ -36,10 +36,7 @@
         border-radius: 3px;
         font-size: 1.1em;
         margin-bottom: 0.2em;
-        &:focus {
-          outline: none;
-          border-color: c.$buttonbg;
-        }
+        outline: none;
         &::placeholder {
           padding-left: 1em;
         }

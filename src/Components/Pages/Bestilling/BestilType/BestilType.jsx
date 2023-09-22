@@ -9,30 +9,40 @@ import stepOne from "../../../../Assets/Images/Layout/Nav-step1.svg";
 import wave from "../../../../Assets/Images/Layout/bg-wave-1.svg";
 
 const BestilType = () => {
+  // Opsætning af formularhåndtering med react-hook-form
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+  // Tilstand til at gemme data fra en API-anmodning
   const [data, setData] = useState([]);
+  // Navigation til side to(Bestilling.jsx)
   const navigate = useNavigate();
 
+  //useEffect hook, der henter data fra APIet, når komponenten indlæses.
   useEffect(() => {
-
+    // Funktion, der henter data fra APIen
     const getData = async () => {
       try {
+        // Laver en GET-anmodning med axios.
         const result = await axios.get(`http://localhost:4000/containers`);
-
+        // Gem resultatet i 'data' tilstanden
         setData(result.data);
+        //Error handling
       } catch (err) {
         console.error(err);
       }
     };
+    // Kald getData funktionen når komponenten indlæses
     getData();
+    // Afhængig af setData, så det kun udføres ved opdatering af setData
   }, [setData]);
 
+  // Funktion, der udføres ved indsendelse af formular
   const onSubmit = (data) => {
     console.log(data);
+    // Naviger til den valgte rute baseret på brugerens valg i formenx½
     navigate(data.radio);
   };
 
@@ -67,6 +77,10 @@ const BestilType = () => {
                             <input
                               type="radio"
                               {...register("radio", { required: true })}
+                              /*
+                              identificerer unikke typer, og når valgt, inkluderer det den valgte type som
+                              en del af formulardataene for behandling og validering.
+                             */
                               value={item.id}
                             />
                             <div className={styles.imageFlex}>

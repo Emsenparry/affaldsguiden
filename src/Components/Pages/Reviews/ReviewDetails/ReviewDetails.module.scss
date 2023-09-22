@@ -1,0 +1,26 @@
+.container {
+    display: grid;
+    grid-template-columns: 5% auto 55%;
+    margin: 2em 0;
+  .wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    .name{
+        margin-top: 1em;
+    }
+  }
+}
+
+
+//MEDIA QUERIES MOBILE
+@media (max-width: 768px) {
+  .imgBox{
+    img{
+      padding-left: 1em;
+    }
+  }
+  .container {
+    margin: 1em 0;
+    grid-template-columns: 15% auto;
+  }
+}

@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 
+// Style til containers
 export const ContainerStyle = styled.section`
     height: 100%;
     width: 100%;

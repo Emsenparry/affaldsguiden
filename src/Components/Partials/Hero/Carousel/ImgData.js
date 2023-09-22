@@ -1,3 +1,4 @@
+// Laver et array med de images der skal bruges i karusellen
 const ImgData = [
     {
         images: require('../../../../Assets/Images/Slideshow/malerspande.webp'),

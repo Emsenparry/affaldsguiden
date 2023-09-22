@@ -1,0 +1,60 @@
+@use "../../../../Assets/Vars.scss" as c;
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: 5em 0;
+  gap: 5em;
+  .wrapper {
+    display: grid;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0 2px 10px 0px rgba(0, 0, 0, 0.2);
+    .googleMaps {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border: none;
+      border-radius: 8px 8px 0 0;
+    }
+    .infoBox {
+      display: grid;
+      grid-template-rows: 1fr min-content;
+      margin: 0.5em 1em 0 1em;
+      h3 {
+        color: black;
+        font-size: 1em;
+        font-weight: 400;
+      }
+      .info {
+        color: gray;
+        padding-top: 0.5em;
+      }
+    }
+  }
+}
+
+.wave {
+  display: block;
+  max-width: 100%;
+}
+
+//MEDIA QUERIES MOBILE
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr;
+    margin: 2em 0;
+    gap: 1em;
+  }
+
+  .wrapper {
+    margin: 1em;
+    .googleMaps {
+      height: 150px;
+    }
+  }
+  .wave{
+    display: none;
+  }
+}
+

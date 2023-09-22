@@ -13,7 +13,7 @@ const Navigation = () => {
     <ContainerStyle maxwidth="1400">
     <nav>
       <Link to="/" className="title">
-        <img src={logo} alt="logo"/>
+        <img className="navLogo" src={logo} alt="logo"/>
       </Link>
       <div className="menu" onClick={() => setMenuOpen(!menuOpen)}>
         <span></span>

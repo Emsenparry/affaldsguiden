@@ -22,7 +22,8 @@ const HeroSlider = () => {
         <Carousel 
         animation="slide"
         interval={5000}
-        navButtonsAlwaysInvisible={true} // Remove arrows
+        // Fjerner pillene
+        navButtonsAlwaysInvisible={true} 
         indicators={false}
         >
             {ImgData.map((item, index) => {

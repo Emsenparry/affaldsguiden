@@ -9,19 +9,25 @@ import { useState } from "react";
 import stepTwo from "../../../Assets/Images/Layout/Nav-step2.svg";
 
 const Bestilling = () => {
+  // Henter 'container_id' fra URL'en ved hjælp af useParams
   const { container_id } = useParams();
 
+  // Opsætning af formularhåndtering med react-hook-form
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
+  // Tilstand til at spore om formularen er blevet indsendt
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+  // Funktion, der udføres ved indsendelse af formular
   const formSubmit = async (formObject) => {
+    // Definerer API-endepunktet
     const endpoint = "http://localhost:4000/orders";
 
+    // Opretter formdata-objekt til at sende data til serveren
     const formData = new URLSearchParams();
     formData.append("container_id", container_id);
     formData.append("fullname", formObject.fullname);
@@ -30,13 +36,13 @@ const Bestilling = () => {
     formData.append("address", formObject.address);
     formData.append("city", formObject.city);
     formData.append("zipcode", formObject.zipcode);
-    console.log(...formData);
 
     try {
+      // Udfør en POST-anmodning til API'en med formdata
       const result = await axios.post(endpoint, formData);
+      console.log(result.data);
+      // Opdater tilstanden for at vise en besked efter indsendelse
       setIsSubmitted(true);
-      if (result.data) {
-      }
     } catch (error) {
       console.error(error);
     }
@@ -46,10 +52,12 @@ const Bestilling = () => {
     <Layout title="Bestil">
       <ContainerStyle maxwidth="1000">
         {isSubmitted ? (
+            // Hvis formularen er indsendt, vis en bekræftelsesbesked
           <div>
             <p>Tak for din bestilling!</p>
           </div>
         ) : (
+          // Hvis formularen ikke er indsendt, vis formularen til brugeren
           <section>
             <form onSubmit={handleSubmit(formSubmit)}>
               <section className={styles.wrapper}>
@@ -69,6 +77,8 @@ const Bestilling = () => {
                       Adipisci, labore ex corporis nobis ab fugiat.
                     </p>
                   </div>
+                   {/* Inputfelter for brugeroplysninger */}
+                    {/* Fejlmeddelelser vises ved ugyldige indtastninger */}
                   <div className={styles.inputBox}>
                     <input
                       type="hidden"

@@ -1,0 +1,80 @@
+@use "../../../../Assets/Vars.scss" as c;
+
+.mainSection {
+  h2 {
+    border-top: 1px solid gray;
+    text-align: center;
+    font-weight: 400;
+    margin-bottom: 2em;
+    margin-top: 1em;
+    padding-top: 2em;
+  }
+
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    input {
+      border-radius: 20px;
+      border: none;
+      background-color: c.$textarea;
+      outline: none;
+      padding: 1em;
+    }
+    svg {
+      cursor: pointer;
+    }
+  }
+
+  .textArea {
+    display: flex;
+    justify-content: center;
+    margin-top: 1em;
+    textarea {
+      border-radius: 20px;
+      outline: none;
+      border: none;
+      resize: none;
+      padding: 1em;
+      background-color: c.$textarea;
+    }
+  }
+
+  .commentBtn {
+    margin-top: 2em;
+    margin-bottom: 5em;
+    display: flex;
+    justify-content: center;
+    button {
+      display: flex;
+      background-color: c.$textarea;
+      border: none;
+      padding: 1.5em 10em;
+      border-radius: 20px;
+      color: c.$green;
+      cursor: pointer;
+      img {
+        padding-right: 1em;
+      }
+    }
+  }
+}
+
+.error {
+  color: red;
+  display: block;
+}
+
+//MEDIA QUERIES MOBILE
+@media (max-width: 768px) {
+  .wrapper {
+    margin: 1em;
+  }
+
+  .textArea {
+    margin: 1em;
+    textarea {
+      width: 100%;
+    }
+  }
+}

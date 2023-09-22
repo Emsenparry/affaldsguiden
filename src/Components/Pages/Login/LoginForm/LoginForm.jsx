@@ -8,27 +8,33 @@ import { BsFillEyeFill } from 'react-icons/bs'
 import { BsFillEyeSlashFill } from 'react-icons/bs'
 
 const LoginForm = () => {
+  // Opsætning af formularhåndtering med react-hook-form
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm();
+  // Bruger brugerdefineret hook til at få adgang til login-data og funktioner
   const { loginData, setLoginData } = useAuth();
+   // Tilstand til at håndtere visning/skjulning af adgangskodefelt
   const [open, setOpen] = useState(false)
 
-  
+  // Funktion til at skifte visning/skjulning af adgangskodefelt
   const toggle = () => {
     setOpen(!open)
   }
 
+  // Funktion, der udføres ved indsendelse af formular
   const formSubmit = async (e) => {
+    // Opretter formdata-objekt til at sende brugernavn og adgangskode
     const formData = new URLSearchParams();
     formData.append("username", e.username);
     formData.append("password", e.password);
     const endpoint = `http://localhost:4000/login`;
 
     try {
+      // Udfør en POST-anmodning til API'en med formdata
       const result = await axios.post(endpoint, formData);
       handleSessionData(result.data);
     } catch (err) {
@@ -36,6 +42,7 @@ const LoginForm = () => {
     }
   };
 
+  // Funktion til at håndtere sessiondata efter vellykket login
   const handleSessionData = async (data) => {
     if (data) {
       sessionStorage.setItem("token", JSON.stringify(data));
@@ -43,9 +50,12 @@ const LoginForm = () => {
     }
   };
 
+  // Funktion til at logge brugeren ud
   const Logout = () => {
+    // Sletter token fra sessionStorage
     sessionStorage.removeItem("token");
     setLoginData("");
+    //Resetter formen efter man logger ud
     reset();
   };
 
@@ -54,6 +64,10 @@ const LoginForm = () => {
       <Layout title="Login">
       <section className="container">
         <h1>Log ind</h1>
+        {/* Conditional ternary operator til at vise login-formular eller brugeroplysninger
+          Hvis bruger IKKE er logget ind, så vis formen. 
+          Hvis bruger er logget på, vis firstname, lastname & logout BTN
+        */}
         {!loginData ? (
           <form
             method="POST"
@@ -93,8 +107,10 @@ const LoginForm = () => {
           </form>
           
         ) : (
+          // Viser brugeroplysninger og logud-knap, hvis brugeren er logget ind
           <Layout title="Min Side">
             <div className="logOutContainer">
+              {/* Henter firstname og lastname ud fra user */}
               <p>{`Du er logget på som: ${loginData.user.firstname} ${loginData.user.lastname}`}</p>
               <button onClick={() => Logout()} className="logOutBtn">
                 Log ud

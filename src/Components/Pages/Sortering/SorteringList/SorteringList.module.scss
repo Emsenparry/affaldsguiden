@@ -70,10 +70,7 @@ a{
         border-radius: 50px;
         height: 3.5em;
         padding: 1em 1.4em;
-        &:focus {
-          outline: none;
-          border-color: c.$buttonbg;
-        }
+        outline: none;
       }
       .icon{
         position: absolute;
@@ -96,5 +93,8 @@ a{
 @media (max-width: 768px) {
   .gallery { 
     margin: 3em;
+  }
+  .wave{
+    display: none;
   }
 }

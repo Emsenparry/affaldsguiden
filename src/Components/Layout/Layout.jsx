@@ -1,15 +1,12 @@
-const Layout = props => {
-    // Sætter page title
-    document.title = props.title
 
-    // Sætter page description hvis der er en
-    if(props.description) {
-        document.querySelector('meta[name="description"]')
-            .setAttribute('content', props.description)
-    }
+// Layout opdatere websidens titel baseret på den værdi, der er angivet i props.title. 
+const Layout = props => {
+    // Sætter page title på alle sider ved hjælp af props.
+    document.title = props.title
 
     return(
         <>
+        {/* props.children repræsenterer indholdet, der skal vises inde i layoutet. */}
             <div>{props.children}</div>
         </>
     )
